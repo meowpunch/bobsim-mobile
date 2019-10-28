@@ -1,5 +1,5 @@
 import React from "react";
-import {ImageBackground, Text, View} from "react-native";
+import {ImageBackground, Text, View, Image} from "react-native";
 import {styles} from "./styles";
 import {NavigationInjectedProps, withNavigation} from "react-navigation";
 import {Geolocation} from "../../../context/Session";
@@ -59,8 +59,8 @@ class Splash extends React.Component<Props, State> {
             <ImageBackground source={Assets.Image.Splash} style={styles.imageBackground}>
                 <View style={styles.container}>
                     <View style={styles.wrapper}>
-                        <Text style={styles.title}>{'Sample Service'}</Text>
-                        <Text style={styles.subtitle}>{'AI Startup'}</Text>
+                        <Image source={Assets.Image.logo} style={styles.logo}></Image>
+
                     </View>
                 </View>
             </ImageBackground>

@@ -9,9 +9,30 @@ const container: ViewStyle = {
 };
 
 const wrapper: ViewStyle = {
-    marginTop: 100,
+    flex: 1,
+    marginTop: 33,
+};
+
+const header: ViewStyle = {
+    flexDirection: "row",
+    height: 60,
+    backgroundColor: 'red',
     alignItems: 'center',
 };
+
+const main: ViewStyle = {
+    flex: 10,
+    backgroundColor: 'blue',
+}
+
+const advertise: ViewStyle = {
+    flex: 3,
+    backgroundColor: 'green',
+}
+const contents: ViewStyle = {
+    flex: 11,
+    backgroundColor: 'pink',
+}
 
 const title: TextStyle = {
     color: '#000',
@@ -38,5 +59,9 @@ export const styles = StyleSheet.create({
     wrapper,
     title,
     value,
-    apiResult
+    apiResult,
+    header,
+    main,
+    advertise,
+    contents
 });

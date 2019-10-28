@@ -1,7 +1,13 @@
-import {StyleSheet, TextStyle, ViewStyle} from "react-native";
+import {StyleSheet, TextStyle, ViewStyle, ImageStyle} from "react-native";
 
 const imageBackground: ViewStyle = {
     flex: 1,
+};
+
+const logo: ImageStyle = {
+    resizeMode: "contain",
+    width: '75%',
+
 };
 
 const container: ViewStyle = {
@@ -11,6 +17,7 @@ const container: ViewStyle = {
 const wrapper: ViewStyle = {
     marginTop: 100,
     alignItems: 'center',
+    justifyContent: 'center',
 };
 
 const title: TextStyle = {
@@ -34,6 +41,7 @@ const value: TextStyle = {
 
 export const styles = StyleSheet.create({
     imageBackground,
+    logo,
     container,
     wrapper,
     title,
