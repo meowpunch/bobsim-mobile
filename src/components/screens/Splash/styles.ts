@@ -1,7 +1,8 @@
 import {StyleSheet, TextStyle, ViewStyle, ImageStyle} from "react-native";
 
-const imageBackground: ViewStyle = {
+const background: ViewStyle = {
     flex: 1,
+    backgroundColor: '#f4f4f4',
 };
 
 const logo: ImageStyle = {
@@ -15,7 +16,7 @@ const container: ViewStyle = {
 };
 
 const wrapper: ViewStyle = {
-    marginTop: 100,
+    flex:1,
     alignItems: 'center',
     justifyContent: 'center',
 };
@@ -40,7 +41,7 @@ const value: TextStyle = {
 };
 
 export const styles = StyleSheet.create({
-    imageBackground,
+    background,
     logo,
     container,
     wrapper,

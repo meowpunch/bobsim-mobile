@@ -10,7 +10,7 @@ const container: ViewStyle = {
 
 const wrapper: ViewStyle = {
     flex: 1,
-    marginTop: 33,
+    marginTop: 35,
 };
 
 const header: ViewStyle = {
