@@ -60,7 +60,6 @@ class Splash extends React.Component<Props, State> {
                 <View style={styles.container}>
                     <View style={styles.wrapper}>
                         <Image source={Assets.Image.logo} style={styles.logo}></Image>
-
                     </View>
                 </View>
             </View>

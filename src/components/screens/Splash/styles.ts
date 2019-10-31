@@ -5,10 +5,13 @@ const background: ViewStyle = {
     backgroundColor: '#f4f4f4',
 };
 
-const logo: ImageStyle = {
-    resizeMode: "contain",
-    width: '75%',
-
+const logo : ImageStyle = {
+    flex:1,
+    resizeMode: 'contain',
+    width: '83%',
+    transform: [
+        {translateY: -30},
+    ],
 };
 
 const container: ViewStyle = {

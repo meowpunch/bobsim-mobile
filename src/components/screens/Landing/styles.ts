@@ -1,4 +1,4 @@
-import {StyleSheet, TextStyle, ViewStyle} from "react-native";
+import {StyleSheet, TextStyle, ViewStyle, ImageStyle} from "react-native";
 
 const imageBackground: ViewStyle = {
     flex: 1,
@@ -10,31 +10,34 @@ const container: ViewStyle = {
 
 const wrapper: ViewStyle = {
     flex: 1,
-    marginTop: 35,
 };
 
-const header: ViewStyle = {
+/* const header: ViewStyle = {
     flexDirection: "row",
     height: 60,
     backgroundColor: 'red',
     alignItems: 'center',
 };
-
+ */
 const main: ViewStyle = {
-    flex: 10,
+    flex: 1,
     backgroundColor: 'blue',
+    justifyContent: 'flex-start'
 }
 
-const advertise: ViewStyle = {
-    flex: 3,
-    backgroundColor: 'green',
-}
+
 const contents: ViewStyle = {
-    flex: 11,
+    flex: 3,
     backgroundColor: 'pink',
 }
 
-const title: TextStyle = {
+const advertise: ImageStyle = {
+    flex:1,
+    resizeMode: 'contain',
+    width: '100%',
+}
+
+/* const title: TextStyle = {
     color: '#000',
     fontSize: 24,
     textAlign: 'center'
@@ -45,22 +48,23 @@ const value: TextStyle = {
     marginBottom: 50,
     color: '#000',
     fontSize: 16,
-};
+}; */
 
 const apiResult: TextStyle = {
+    flex: 1,
     marginTop: 40,
     color: '#000',
-    fontSize: 16,
+    fontSize: 50,
 };
 
 export const styles = StyleSheet.create({
     imageBackground,
     container,
     wrapper,
-    title,
-    value,
+    /* title,
+    value, */
     apiResult,
-    header,
+    /* header, */
     main,
     advertise,
     contents
