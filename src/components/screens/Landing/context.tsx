@@ -1,5 +1,6 @@
 import React from "react";
 import {NavigationParams, NavigationScreenProp, NavigationState} from "react-navigation";
+import  {NavigationTabProp} from "react-navigation-tabs"
 import SessionContext from "../../../context/Session";
 import SomeDataContext from "../../../context/SomeData";
 import Landing from ".";

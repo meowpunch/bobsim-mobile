@@ -6,6 +6,8 @@ import {styles} from "./styles";
 import Assets from "../../../constants/Assets";
 import {Creds} from "../../../constants/Credentials";
 import AddItem from "../../icons/AddItem";
+import CustomDrawerNavigator from "../../CustomDrawerNavigator/context";
+import CustomTabNavigator from "../../../router/src/components/CustomTabNavigator/index";
 
 type Props = NavigationInjectedProps & {
     fieldA: Array<string>,
@@ -39,17 +41,23 @@ class Landing extends React.Component<Props, State> {
             buttonResponse: ''
         }
     }
-
+ 
+    static navgationOptions = {
+        headerTitle: "fuck"
+    }
+  
     _trigger = () => {
         let bodyValue: SendMessageRequest = {userName: this.props.userName};
-        fetch(Creds.SERVER_API_ENDPOINT +  "register/handsome", {
+        fetch(Creds.SERVER_API_ENDPOINT +  "3/findAll", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             }/* ,
             body: JSON.stringify({
-                userName: '홍길동'
+                name: 'wans',
+                expDate: '10/31',
+                memo: 'fuck',
               }) */
         }).then(response => response.json())
             .then((response ) => {
@@ -63,13 +71,15 @@ class Landing extends React.Component<Props, State> {
 
     render() {
         return(
+            
             <View style={styles.container}>
                 <View style={styles.wrapper}>
+
                     <View style={styles.main}>
                         <Image source={Assets.Image.advertise} style={styles.advertise}></Image>
                         <View style={styles.contents}>
                             
-                            {/* <Button title={"Trigger API"} onPress={this._trigger}/> */}
+                            <Button title={"Trigger API"} onPress={this._trigger}/>
                             <Text style={styles.apiResult}>{this.state.buttonResponse}
                             </Text>
                             {/* <Text style={styles.apiResult}>
@@ -78,8 +88,10 @@ class Landing extends React.Component<Props, State> {
                         </View>                        
                     </View>
                     <AddItem></AddItem>
+                    
                 </View>
             </View>
+            
 
         );
     }

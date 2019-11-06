@@ -1,7 +1,8 @@
 import {StyleSheet, ImageStyle} from "react-native";
+import { tsNonNullExpression } from "@babel/types";
 
-const leftH: ImageStyle = {
-    left:20,
+const leftH = {
+    left: 10,
 };
 
 const rightH: ImageStyle = {
