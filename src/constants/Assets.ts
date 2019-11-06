@@ -5,7 +5,7 @@ const Image = {
     search: require('../../assets/images/header/search.png'),
     adduser: require('../../assets/images/header/adduser.png'),
     delete: require('../../assets/images/header/delete.png'),
-    advertise: require('../../assets/images/advertisement.jpg'),
+    advertise: {uri: 'https://fm-foodpicturebucket.s3.ap-northeast-2.amazonaws.com/frontend/advertisement.jpg'},
     addItem: require('../../assets/images/addItem.png')
 };
 

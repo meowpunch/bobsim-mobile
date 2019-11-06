@@ -19,12 +19,12 @@ const wrapper: ViewStyle = {
     alignItems: 'center',
 };
  */
+
 const main: ViewStyle = {
     flex: 1,
     backgroundColor: 'blue',
     justifyContent: 'flex-start'
 }
-
 
 const contents: ViewStyle = {
     flex: 3,
@@ -33,7 +33,7 @@ const contents: ViewStyle = {
 
 const advertise: ImageStyle = {
     flex:1,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     width: '100%',
 }
 
