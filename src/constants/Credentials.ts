@@ -3,7 +3,7 @@ const SERVER_API_ENDPOINT = 'http://ec2-54-180-125-113.ap-northeast-2.compute.am
 
 // wans http://ec2-54-180-125-113.ap-northeast-2.compute.amazonaws.com:8083/send-message
 
-export const Creds = {
+export const Credentials = {
     GOOGLE_API_KEY,
     SERVER_API_ENDPOINT,
 };

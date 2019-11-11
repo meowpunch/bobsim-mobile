@@ -28,16 +28,16 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 const AddItem = ({ navigation }) => (
-    <View style={{position:"absolute", bottom:20, right:10}}>
+    <View style={{position:"absolute", bottom:36, right:20}}>
         <Ionicons.Button 
             name="ios-add-circle" 
             size={84} 
             backgroundColor="transparent" 
             color='black' 
-            onPress={() => navigation.navigate('addItems')}
+            onPress={() => navigation.navigate('AddItems')}
             />
     </View>
 );
 
 
-export default withNavigation(AddItem);
+export default AddItem;

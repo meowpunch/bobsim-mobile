@@ -7,7 +7,7 @@ import Settings from "../screens/Settings/."
 import MenuHeader from "../HeaderLeft"
 /* import SearchHeader from "../header/SearchHeader" */
 import styles from "./styles";1
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, Entypo } from "@expo/vector-icons";
 import CustomStackNavigator from "../CustomStackNavigator/context"
 
 
@@ -26,7 +26,11 @@ const content = props => (
 const CustomDrawerNavigator = createDrawerNavigator({
   
     Home: {
-      screen: Landing,
+      screen: CustomStackNavigator,
+      navigationOptions: {
+        drawerLabel: "전체 보기",
+        drawerIcon: () => (<Entypo name="grid" size={28} color="#e6e6e6"/>),
+      }
     },
 
 

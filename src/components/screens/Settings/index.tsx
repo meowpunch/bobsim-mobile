@@ -11,7 +11,7 @@ import {styles} from "./styles";
 export default class Settings extends Component {
   static navigationOptions = {
     drawerLabel: "설정",
-    drawerIcon: () => (<Ionicons name="ios-settings" size={28} color="#e6e6e6"/>),
+    drawerIcon: () => (<Ionicons name="ios-settings" size={28} color="#f2f2f2"/>),
 
     headerTitle: "설정",
     headerRight: SettingsHRight,

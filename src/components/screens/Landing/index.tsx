@@ -4,11 +4,9 @@ import {NavigationInjectedProps, withNavigation} from "react-navigation";
 import {Geolocation} from "../../../context/Session";
 import {styles} from "./styles";
 import Assets from "../../../constants/Assets";
-import {Creds} from "../../../constants/Credentials";
+import {Credentials} from "../../../constants/Credentials";
 import AddItem from "../../icons/AddItem";
 import HomeRHeader from "../../HeaderRight/HomeHRIght";
-import { Entypo } from "@expo/vector-icons";
-import { DrawerActions } from "react-navigation-drawer";
 import HeaderLeft from "../../HeaderLeft/index"
 
 
@@ -48,8 +46,8 @@ class Landing extends React.Component<Props, State> {
 
 
     static navigationOptions = {
-        drawerLabel: "전체 보기",
-        drawerIcon: () => (<Entypo name="grid" size={28} color="#e6e6e6"/>),
+        /* drawerLabel: "전체 보기",
+        drawerIcon: () => (<Entypo name="grid" size={28} color="#e6e6e6"/>), */
         
         headerTitle: "전체 보기",
         headerRight: HomeRHeader,
@@ -60,7 +58,7 @@ class Landing extends React.Component<Props, State> {
 
     _trigger = () => {
         let bodyValue: SendMessageRequest = {userName: this.props.userName};
-        fetch(Creds.SERVER_API_ENDPOINT +  "3/findAll", {
+        fetch(Credentials.SERVER_API_ENDPOINT +  "3/findAll", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -92,7 +90,7 @@ class Landing extends React.Component<Props, State> {
                             <Image source={Assets.Image.advertise} style={styles.advertise}></Image>
                         </View>
                         
-                        <View style={{backgroundColor:"pink"}}>
+                        <View style={{backgroundColor:"#f2f2f2"}}>
                             
                             {/* <Button title={"Trigger API"} onPress={this._trigger}/> */}
                             {/* <Text style={styles.apiResult}>{this.state.buttonResponse}
@@ -103,12 +101,11 @@ class Landing extends React.Component<Props, State> {
                             </Text>
                         </View>     
                     </ScrollView>
-                    <AddItem></AddItem>
-                    
+                    <AddItem navigation={this.props.navigation} ></AddItem>
                 </View>
             </View>
         );
     }
 }
 
-export default withNavigation(Landing);
+export default Landing;

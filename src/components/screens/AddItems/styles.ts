@@ -6,6 +6,7 @@ const container: ViewStyle = {
 
 const wrapper: ViewStyle = {
     flex: 1,
+    backgroundColor: "#f2f2f2",
 };
 
 const imageV: ViewStyle = {
@@ -18,11 +19,12 @@ const imageV: ViewStyle = {
 const contentV : ViewStyle ={
     flex:3,
     alignItems: "center",
-    /* backgroundColor:"pink", */ 
-    padding:30
+    backgroundColor:"white",
 } 
 
+const textbox = {
 
+}
 
 const logo : ImageStyle = {
     flex:1,
@@ -38,4 +40,5 @@ export const styles = StyleSheet.create({
     logo,
     imageV,
     contentV,
+    textbox,
 });
