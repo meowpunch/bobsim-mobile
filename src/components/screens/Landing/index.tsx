@@ -108,4 +108,4 @@ class Landing extends React.Component<Props, State> {
     }
 }
 
-export default Landing;
+export default withNavigation(Landing);

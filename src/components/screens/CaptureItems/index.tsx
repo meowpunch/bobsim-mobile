@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Camera, Permissions } from 'expo';
+import * as Permissions from 'expo-permissions';
+import { Camera } from "expo-camera"
 
 import styles from './styles';
 import Toolbar from './toolbar.component';
@@ -31,10 +32,10 @@ export default class CaptureItems extends React.Component {
         this.setState({ capturing: false, captures: [photoData, ...this.state.captures] })
     };
 
-    handleLongCapture = async () => {
+    /* handleLongCapture = async () => {
         const videoData = await this.camera.recordAsync();
         this.setState({ capturing: false, captures: [videoData, ...this.state.captures] });
-    };
+    }; */
 
     async componentDidMount() {
         const camera = await Permissions.askAsync(Permissions.CAMERA);
@@ -64,7 +65,7 @@ export default class CaptureItems extends React.Component {
                     />
                 </View>
 
-                {captures.length > 0 && <Gallery captures={captures}/>}
+                {/* {captures.length > 0 && <Gallery captures={captures}/>} */}
 
                 <Toolbar 
                     capturing={capturing}
@@ -74,7 +75,7 @@ export default class CaptureItems extends React.Component {
                     setCameraType={this.setCameraType}
                     onCaptureIn={this.handleCaptureIn}
                     onCaptureOut={this.handleCaptureOut}
-                    onLongCapture={this.handleLongCapture}
+                    /* onLongCapture={this.handleLongCapture} */
                     onShortCapture={this.handleShortCapture}
                 />
             </React.Fragment>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Camera } from 'expo';
+import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
@@ -13,7 +13,7 @@ export default ({
     cameraType = CameraTypes.back, 
     flashMode = CameraFlashModes.off, 
     setFlashMode, setCameraType, 
-    onCaptureIn, onCaptureOut, onLongCapture, onShortCapture, 
+    onCaptureIn, onCaptureOut, onShortCapture, 
 }) => (
     <Grid style={styles.bottomToolbar}>
         <Row>
@@ -32,7 +32,7 @@ export default ({
                 <TouchableWithoutFeedback
                     onPressIn={onCaptureIn}
                     onPressOut={onCaptureOut}
-                    onLongPress={onLongCapture}
+                    /* onLongPress={onLongCapture} */
                     onPress={onShortCapture}>
                     <View style={[styles.captureBtn, capturing && styles.captureBtnActive]}>
                         {capturing && <View style={styles.captureBtnInternal} />}

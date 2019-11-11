@@ -14,7 +14,7 @@ export const LandingHandler: React.FC<Props> = (props: Props) => {
         <SomeDataContext.Consumer>
             {({fieldA, fieldB, fieldC, userName}) => {
                 return (
-                    <SessionContext.Consumer>
+                    <SessionContext.Consumer>   
                         {({geolocation}) => {
                             return <Landing
                                 fieldA={fieldA}
