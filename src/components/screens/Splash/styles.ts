@@ -9,9 +9,9 @@ const logo : ImageStyle = {
     flex:1,
     resizeMode: 'contain',
     width: '83%',
-    transform: [
+    /* transform: [
         {translateY: -30},
-    ],
+    ], */
 };
 
 const container: ViewStyle = {

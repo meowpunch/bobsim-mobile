@@ -1,30 +1,22 @@
 import React, { Component } from "react";
 import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
-import {NavigationInjectedProps} from "react-navigation"
+import {NavigationInjectedProps, NavigationEvents, withNavigation} from "react-navigation";
 import { Ionicons, AntDesign, Foundation } from "@expo/vector-icons";
+import {Item} from "../../../context/AppData";
+
 
 import {styles} from "./styles";
 import {Credentials} from "../../../constants/Credentials";
 
 
-/* import CustomHeader from "../components/CustomHeader"; */
-
 type Props =  NavigationInjectedProps & {
-
+  Id: number,
+  newContainer: Array<Item>,
+  addItem: (Item: any) => void
 }
 
 type State = {
-  inputTitle: string,
-  inputDate: string,
-  inputTag: string,
-  inputNote: string,
-}
-
-type FoodMatarials = {
-  title: string,
-  expirationDate: string,
-  catagory: string,
-  Note: string,
+  newItem: Item,
 }
 
 
@@ -32,11 +24,20 @@ class AddItems extends Component<Props, State> {
   constructor(props) {
     super(props);
      
+    console.log(props.newContainer)
     this.state = {
-        inputTitle: '',
+        /* inputTitle: '',
         inputDate: '',
         inputTag: '',
         inputNote: '',
+        imageUri: '', */
+        newItem: {
+          name: '당근',
+          expDate: '2020.2.2',
+          category: '야채',
+          memo: 'default Item',
+          uri: '',
+        },
     }
   }   
 
@@ -50,7 +51,12 @@ class AddItems extends Component<Props, State> {
   }
 
   onChangeTitle(text) {
-    this.setState({inputTitle: text})
+    this.setState({
+      newItem: {
+        ...this.state.newItem,
+        name: text
+      }
+    })
   }
 
   onChangeDate(text) {
@@ -81,7 +87,12 @@ class AddItems extends Component<Props, State> {
         break;
     }
 
-    this.setState({inputDate: text})
+    this.setState({
+      newItem: {
+        ...this.state.newItem,
+        expDate: text
+      }
+    })
   }
 
   onChangeTag(text) {
@@ -90,45 +101,58 @@ class AddItems extends Component<Props, State> {
       text = text.subtr(0,9)
     }
 
-    this.setState({inputTag: text})
+    this.setState({
+      newItem: {
+        ...this.state.newItem,
+        category: text
+      }
+    })
   }
 
   onChangeNote(text) {
-    this.setState({inputNote: text})
+    this.setState({
+      newItem: {
+        ...this.state.newItem,
+        memo: text
+      }
+    })
   }
 
   pressButton() {
-    alert("throw data")
-    console.log(this.state.inputTitle)
+    
 
-    if ((this.state.inputTitle).length == 0 || (this.state.inputDate).split('.').length < 3) alert("옳바르지 않은 형식입니다.")
+    if ((this.state.newItem.name).length == 0 || (this.state.newItem.expDate).split('.').length < 3) alert("옳바르지 않은 형식입니다.")
     else {
-      let form: FoodMatarials = {
-        title: this.state.inputTitle,
-        expirationDate: this.state.inputDate,
-        catagory: this.state.inputTag,
-        Note: this.state.inputNote
-      }
+      alert("throw data")
+      console.log("after addPress");
+      
+      console.log(this.state.newItem)
+      console.log(this.props.Id)
 
-      console.log(form)
-      /* fetch(Credentials.SERVER_API_ENDPOINT +  "3/findAll", {
+      this.props.addItem(this.state.newItem)
+      console.log(this.props.addItem)
+      
+      
+      console.log(Credentials.SERVER_API_ENDPOINT +  this.props.Id + "/register")
+      /* fetch(Credentials.SERVER_API_ENDPOINT +  this.props.Id+ "/register", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
               "Accept": "application/json"
           },
-          body: JSON.stringify({
-              name: 'wans',
-              expDate: '10/31',
-              memo: 'fuck',
-            })
+          body: JSON.stringify( {
+            id: this.props.Id,
+            ...this.state.newItem,
+          })
       }).then(response => response.json())
-          .then((response ) => {
-              if (response.exitCode !== 200) {
-                  throw new Error('send-message API call failed with message: ' + response.message)
-              }
-              console.log(response)
-          }) */
+        .then((response ) => {
+            if (response.exitCode !== 200) {
+                throw new Error('send-message API call failed with message: ' + response.message)
+            } 
+            alert(response)
+        }) */
+        console.log(this.props.newContainer)
+        this.props.navigation.navigate('Home')
     }
   }
   
@@ -140,11 +164,28 @@ class AddItems extends Component<Props, State> {
     return (
       <View style={styles.container}>
         <View style={styles.wrapper}>
+
+          {/* <NavigationEvents
+            onDidFocus={payload => {
+              console.log('did focus', payload)
+              console.log(this.props.navigation.state.params)
+              console.log(JSON.stringify(this.props.navigation.state.params) == null)
+              console.log(JSON.stringify(this.props.navigation.state.params) == undefined)
+              console.log(this.props.navigation.state.params == null)
+              console.log(this.props.navigation.state.params == undefined)
+
+              console.log(JSON.stringify(this.props.navigation.getParam('photoItem')))
+              console.log(this.props.navigation.getParam('photoItem').uri)
+
+          }} 
+          /> */}
           
-          <View style={{padding:24, flexDirection: "row", backgroundColor:"white", marginTop: 10, marginBottom: 10, borderBottomWidth:1.5, borderColor:"#e6e6e6"}}>
+          <View style={{padding:18, flexDirection: "row", backgroundColor:"white", marginTop: 10, marginBottom: 10, borderBottomWidth:1.5, borderColor:"#e6e6e6"}}>
               
             <View style={{flex:3, aspectRatio:1, backgroundColor:"black", alignItems: "center", justifyContent:"center"}}>
-              {/* <Image source={Assets.Image.logo} style={{ resizeMode:"contain", aspectRatio:1}}></Image> */}
+              
+              {!(this.props.navigation.state.params == null) && <Image source={{uri: this.props.navigation.getParam('photoItem').uri}} style={{zIndex: -1, width: "100%",  resizeMode:"cover", aspectRatio:1}}></Image>}
+
               <View style={{ zIndex:-1,position:"absolute",right:-13, bottom:-13, aspectRatio:1, borderRadius:32, backgroundColor:"white", padding:2, alignItems: "center", justifyContent:"center"}}>
                 <View style={{borderRadius:32, padding:6,aspectRatio:1, backgroundColor:"black", alignItems: "center", justifyContent:"center"}}>
                   <TouchableOpacity style={{}} onPress={this.cameraButton.bind(this)}>
@@ -154,13 +195,12 @@ class AddItems extends Component<Props, State> {
               </View>
             </View>
 
-            <View style={{flex:8/* , backgroundColor:"#f4f4f4" */, flexDirection: "row",alignItems: "center", paddingLeft:24}}>
+            <View style={{flex:10/* , backgroundColor:"#f4f4f4" */, flexDirection: "row",alignItems: "center", paddingLeft:18}}>
               <View style={{borderColor: "#d9d9d9", paddingBottom: 4, paddingTop: 4, borderBottomWidth:1, alignItems: "center"}}>
                 <TextInput 
                   keyboardType='default' 
                   onChangeText={text => this.onChangeTitle(text)}
                   placeholder='식자재 이름을 입력하시오.'
-                  /* value={this.state.inputDate} */ 
                   style={{ fontSize:26}}>
                 </TextInput>
               </View>
@@ -177,7 +217,7 @@ class AddItems extends Component<Props, State> {
                 keyboardType='numeric' 
                 onChangeText={text => this.onChangeDate(text)}
                 placeholder='2020.2.3'
-                value={this.state.inputDate} 
+                value={this.state.newItem.expDate} 
                 style={{flex:1, fontSize:26}}>
               </TextInput>
             </View>
@@ -187,7 +227,6 @@ class AddItems extends Component<Props, State> {
                 keyboardType='default' 
                 onChangeText={text => this.onChangeTag(text)} 
                 placeholder='미분류'
-                /* value={this.state.inputTag} */ 
                 style={{flex:1, fontSize:26}}>
               </TextInput>
             </View>
@@ -197,7 +236,6 @@ class AddItems extends Component<Props, State> {
                 keyboardType='default' 
                 onChangeText={text => this.onChangeNote(text)} 
                 placeholder='메모를 입력하시오.'
-                /* value={this.state.inputNote} */ 
                 style={{flex:1, fontSize:26}}>
               </TextInput>
             </View>
@@ -218,4 +256,4 @@ class AddItems extends Component<Props, State> {
 }
 
 
-export default AddItems;
+export default withNavigation(AddItems);

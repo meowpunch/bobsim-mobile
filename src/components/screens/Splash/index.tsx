@@ -21,17 +21,27 @@ type State = {
     errorMessage: string
 }
 
+/* type Props =  NavigationInjectedProps & {
+    
+} */
+
 class Splash extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this._getLocationAsync().then(() =>
+
+        
+        
+        /* this._getLocationAsync().then(() =>
             this._getPostalAddressAsync(this.state.location.coords.latitude, this.state.location.coords.longitude)
                 .then(() => this.props.setGeolocation(this.state.location, this.state.postalAddress))
-        );
+        ); */
+
+        
+
         setTimeout(() => this.props.navigation.navigate('Landing'), 3000);
     }
 
-    _getLocationAsync = async () => {
+    /* _getLocationAsync = async () => {
         let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if (status !== 'granted') {
             this.setState({
@@ -52,7 +62,7 @@ class Splash extends React.Component<Props, State> {
         }
         let postalAddress = await Location.reverseGeocodeAsync({latitude: latitude, longitude: longitude});
         this.setState({ postalAddress: postalAddress[0] });
-    };
+    }; */
 
     render() {
         return (

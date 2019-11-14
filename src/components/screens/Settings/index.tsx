@@ -28,7 +28,7 @@ export default class Settings extends Component {
           
           <View style={styles.contentV}>
             <Text>Version: 0.000.0</Text>
-            <Text>Update: 06.11.2019</Text>
+            <Text>Update: 15.11.2019</Text>
           </View>
         </View>
       </View>

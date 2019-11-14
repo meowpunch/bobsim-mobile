@@ -2,7 +2,7 @@ import React from "react";
 import { View,Button } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import Landing from "../screens/Landing/index"
-import AddItems from "../screens/AddItems/context"
+import {AddItemsHandler} from "../screens/AddItems/context"
 import CaptureItems from "../screens/CaptureItems/context"
 /* import SearchHeader from "../header/SearchHeader" */
 
@@ -10,7 +10,7 @@ import CaptureItems from "../screens/CaptureItems/context"
 
 const CameraStackNavigator = createStackNavigator(
   {
-    AddItems: AddItems,
+    AddItems: AddItemsHandler,
 
 
     CaptureItems: CaptureItems

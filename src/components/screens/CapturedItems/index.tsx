@@ -30,12 +30,13 @@ export default class CaptureItems extends React.Component<NavigationInjectedProp
 
     handleShortCapture = async () => {
         const photoData = await this.camera.takePictureAsync();
-        this.setState({ capturing: false, captures: [photoData, ...this.state.captures] })
+        /* this.setState({ capturing: false, captures: [photoData, ...this.state.captures] }) */
+
         console.log(photoData)
         console.log(photoData.uri)
-        this.props.navigation.navigate("AddItems", {
+        /* this.props.navigation.navigate("AddItems", {
             photoItem: photoData
-        })  
+        })   */
     };
 
     /* handleLongCapture = async () => {

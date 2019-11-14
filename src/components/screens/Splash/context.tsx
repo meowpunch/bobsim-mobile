@@ -17,7 +17,7 @@ class SplashHandler extends React.Component<Props> {
                     return (
                         <SessionContext.Consumer>
                             {({geolocation, setGeolocation}) => {
-                                return <Splash
+                                return <Splash  
                                     fieldA={fieldA}
                                     fieldB={fieldB}
                                     fieldC={fieldC}

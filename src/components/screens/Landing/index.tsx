@@ -1,63 +1,44 @@
-import React from "react";
+import React, { Component }  from "react";
 import {Button, Text, View, Image, ScrollView, Dimensions} from "react-native";
-import {NavigationInjectedProps, withNavigation} from "react-navigation";
-import {Geolocation} from "../../../context/Session";
+import {NavigationInjectedProps, withNavigation, NavigationEvents} from "react-navigation";
+import {Item} from "../../../context/AppData";
 import {styles} from "./styles";
 import Assets from "../../../constants/Assets";
 import {Credentials} from "../../../constants/Credentials";
 import AddItem from "../../icons/AddItem";
-import HomeRHeader from "../../HeaderRight/HomeHRIght";
-import HeaderLeft from "../../HeaderLeft/index"
+import ItemComponent from "../../ItemComponent/."
 
 
 type Props = NavigationInjectedProps & {
-    fieldA: Array<string>,
-    fieldB: boolean,
-    fieldC: Date,
-    userName: string,
-    geolocation: Geolocation
+    container: Array<Item>,
+    newContainer: Array<Item>,
 }
 
 type State = {
-    buttonResponse: string
 }
 
-type SendMessageRequest = {
-    userName: string
-}
-
-type SendMessageResponse = {
-    output: string,
-    exitCode: number,
-    message: string
-}
-
-
-
-
-class Landing extends React.Component<Props, State> {
+class Landing extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            buttonResponse: '',
         }
     }
     
 
 
-    static navigationOptions = {
-        /* drawerLabel: "전체 보기",
-        drawerIcon: () => (<Entypo name="grid" size={28} color="#e6e6e6"/>), */
+    /* static navigationOptions = {
+        drawerLabel: "전체 보기",
+        drawerIcon: () => (<Entypo name="grid" size={28} color="#e6e6e6"/>),
         
         headerTitle: "전체 보기",
         headerRight: HomeRHeader,
         headerLeft: HeaderLeft,
-    }
+    } */
     
 
 
     _trigger = () => {
-        let bodyValue: SendMessageRequest = {userName: this.props.userName};
+
         fetch(Credentials.SERVER_API_ENDPOINT +  "3/findAll", {
             method: "GET",
             headers: {
@@ -95,7 +76,29 @@ class Landing extends React.Component<Props, State> {
                             {/* <Button title={"Trigger API"} onPress={this._trigger}/> */}
                             {/* <Text style={styles.apiResult}>{this.state.buttonResponse}
                             </Text> */}
+                            <NavigationEvents
+                                onWillFocus={payload => {
+                                    console.log("WTHWTHWTHWTH");
+                                    
+                                    console.log(this.props.newContainer)
+                                }}
+                            />
+                            {
+                                this.props.container.map((item:Item,key) => (
+                                    <ItemComponent key={key} item={item}></ItemComponent>
+                                ))
+                            }{
+                                this.props.newContainer.map((item,key) => (
+                                    <ItemComponent key={key} item={item}></ItemComponent>
+                                ))
+                            }
+         
                             <Text style={styles.apiResult}>
+                                {
+                                    this.props.container.map((item,key) => {
+                                        <Text>{item.name}</Text>
+                                    })
+                                }
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores mollitia quisquam nihil, maiores accusantium, possimus quidem odit quam dicta suscipit, unde deserunt. Aut suscipit temporibus modi perferendis repellendus ullam?
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam iusto incidunt nemo cumque quisquam amet iste, nam adipisci aspernatur labore quos impedit laborum consequatur deleniti repudiandae harum! Illo, eveniet nobis?
                             </Text>
