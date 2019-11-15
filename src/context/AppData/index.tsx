@@ -33,14 +33,14 @@ export const initialAppData = {
     container: [
         {
             name: '닭',
-            expDate: '2020.1.3',
+            expDate: '2019.11.17',
             category: '육류',
             memo: '12호',
             uri: 'https://fm-foodpicturebucket.s3.ap-northeast-2.amazonaws.com/frontend/foods/chicken.jpg',
         },
         {
             name: '감자',
-            expDate: '2020.12.7',
+            expDate: '2019.11.22',
             category: '야채',
             memo: '',
             uri: '', // https://fm-foodpicturebucket.s3.ap-northeast-2.amazonaws.com/frontend/foods/potato.jpg
@@ -56,7 +56,7 @@ export const initialAppData = {
         },
         {
             name: '양파',
-            expDate: '2020.1.23',
+            expDate: '2020.1.21',
             category: '야채',
             memo: '뉴비',
             uri: 'https://fm-foodpicturebucket.s3.ap-northeast-2.amazonaws.com/frontend/foods/onion.jpg',

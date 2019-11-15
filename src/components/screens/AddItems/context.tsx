@@ -20,6 +20,5 @@ export const AddItemsHandler: React.FC<Props> = (props: Props) => {
                     />
                 }}
             </AppDataContext.Consumer>
-    
     );
 };

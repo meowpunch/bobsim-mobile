@@ -7,6 +7,7 @@ import Assets from "../../../constants/Assets";
 import {Credentials} from "../../../constants/Credentials";
 import AddItem from "../../icons/AddItem";
 import ItemComponent from "../../ItemComponent/."
+import ItemHeader from "../../ItemHeader/."
 
 
 type Props = NavigationInjectedProps & {
@@ -23,42 +24,7 @@ class Landing extends Component<Props, State> {
         this.state = {
         }
     }
-    
 
-
-    /* static navigationOptions = {
-        drawerLabel: "전체 보기",
-        drawerIcon: () => (<Entypo name="grid" size={28} color="#e6e6e6"/>),
-        
-        headerTitle: "전체 보기",
-        headerRight: HomeRHeader,
-        headerLeft: HeaderLeft,
-    } */
-    
-
-
-    _trigger = () => {
-
-        fetch(Credentials.SERVER_API_ENDPOINT +  "3/findAll", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }/* ,
-            body: JSON.stringify({
-                name: 'wans',
-                expDate: '10/31',
-                memo: 'fuck',
-              }) */
-        }).then(response => response.json())
-            .then((response ) => {
-                /* if (response.exitCode !== 200) {
-                    throw new Error('send-message API call failed with message: ' + response.message)
-                } */
-                console.log(response)
-                this.setState({buttonResponse: response.memo});
-            })
-    };
 
     render() {
         return(
@@ -73,9 +39,7 @@ class Landing extends Component<Props, State> {
                         
                         <View style={{backgroundColor:"#f2f2f2"}}>
                             
-                            {/* <Button title={"Trigger API"} onPress={this._trigger}/> */}
-                            {/* <Text style={styles.apiResult}>{this.state.buttonResponse}
-                            </Text> */}
+                        
                             <NavigationEvents
                                 onWillFocus={payload => {
                                     console.log("WTHWTHWTHWTH");
@@ -85,11 +49,18 @@ class Landing extends Component<Props, State> {
                             />
                             {
                                 this.props.container.map((item:Item,key) => (
-                                    <ItemComponent key={key} item={item}></ItemComponent>
+                                    <View key={key} >
+                                        <ItemHeader item={item}></ItemHeader>
+                                        <ItemComponent item={item}></ItemComponent>
+                                    </View>                                 
                                 ))
-                            }{
+                            }
+                            {
                                 this.props.newContainer.map((item,key) => (
-                                    <ItemComponent key={key} item={item}></ItemComponent>
+                                    <View key={key} >
+                                        <ItemHeader item={item}></ItemHeader>
+                                        <ItemComponent item={item}></ItemComponent>
+                                    </View>
                                 ))
                             }
          

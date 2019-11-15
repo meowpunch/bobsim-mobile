@@ -27,7 +27,7 @@ const HeaderRIght = (
       size={32}
       color="black"
       backgroundColor="transparent"
-      onPress={() => alert("babebabe~")}
+      onPress={() => alert("search")}
       iconStyle={styles.rightH}
     />
   </View>

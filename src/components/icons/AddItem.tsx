@@ -2,7 +2,7 @@ import {Image, View, TouchableOpacity} from "react-native";
 import {withNavigation} from "react-navigation";
 // import {styles} from "./styles";
 import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 /* class AddItem extends React.Component {
 
@@ -28,14 +28,16 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 const AddItem = ({ navigation }) => (
-    <View style={{position:"absolute", bottom:36, right:20}}>
-        <Ionicons.Button 
-            name="ios-add-circle" 
-            size={84} 
-            backgroundColor="transparent" 
-            color='black' 
-            onPress={() => navigation.navigate('AddItems')}
-            />
+    <View style={{position:"absolute", padding:20, borderRadius:50,bottom:36, right:28, backgroundColor:"black"}}>
+        <TouchableOpacity onPress={() => navigation.navigate('AddItems')}>
+            <AntDesign 
+                name="plus" 
+                size={28} 
+                color='white' 
+            >
+                
+            </AntDesign>
+        </TouchableOpacity>
     </View>
 );
 

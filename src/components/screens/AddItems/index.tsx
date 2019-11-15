@@ -180,8 +180,7 @@ class AddItems extends Component<Props, State> {
           }} 
           /> */}
           
-          <View style={{padding:18, flexDirection: "row", backgroundColor:"white", marginTop: 10, marginBottom: 10, borderBottomWidth:1.5, borderColor:"#e6e6e6"}}>
-              
+          <View style={{padding:18, flexDirection: "row", backgroundColor:"white", marginTop: 10, marginBottom: 10, borderBottomWidth:1.5, borderColor:"#e6e6e6"}}> 
             <View style={{flex:3, aspectRatio:1, backgroundColor:"black", alignItems: "center", justifyContent:"center"}}>
               
               {!(this.props.navigation.state.params == null) && <Image source={{uri: this.props.navigation.getParam('photoItem').uri}} style={{zIndex: -1, width: "100%",  resizeMode:"cover", aspectRatio:1}}></Image>}
@@ -205,7 +204,6 @@ class AddItems extends Component<Props, State> {
                 </TextInput>
               </View>
             </View>
-
           </View>
 
         
