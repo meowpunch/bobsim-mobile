@@ -141,36 +141,22 @@ class AddItems extends Component<Props, State, /* imageData */> {
       let formData = new FormData()
       formData.append('file', JSON.parse(JSON.stringify({
         uri : photoItem.uri,
-        name : 'testName.jpg',
+        name : this.props.Id+'_'+this.state.newItem.name+'.jpg',
         type: 'image/jpg',
       })))
 
-      console.log(this.props.navigation.getParam('photoItem'))
-      console.log(this.props.navigation.getParam('photoItem').type)
+      /* console.log(this.props.navigation.getParam('photoItem'))
+      console.log(this.props.navigation.getParam('photoItem').type) */
       
       console.log(Credentials.SERVER_API_ENDPOINT +  this.props.Id + "/register")
-      fetch(Credentials.SERVER_API_ENDPOINT + "/2/registerImage/foods", {
-          method: "POST",
-          headers: {
-              "Content-Type": "multipart/form-data",
-              "Accept": "application/json"
-          },
-          body: formData
-      }).then(response => response.json())
-        .then((response ) => {
-            if (response.exitCode !== 200) {
-                throw new Error('send-message API call failed with message: ' + response.message)
-            } 
-            alert(response)
-        })
 
-        fetch(Credentials.SERVER_API_ENDPOINT + "/0/registerImage/foods", {
-          method: "POST",
-          headers: {
-              "Content-Type": "multipart/form-data",
-              "Accept": "application/json"
-          },
-          body: formData
+      fetch(Credentials.SERVER_API_ENDPOINT + "/0/registerImage/foods", {
+        method: "POST",
+        headers: {
+            "Content-Type": "multipart/form-data",
+            "Accept": "application/json"
+        },
+        body: formData
       }).then(response => response.json())
         .then((response ) => {
             if (response.exitCode !== 200) {
@@ -180,16 +166,16 @@ class AddItems extends Component<Props, State, /* imageData */> {
         })
 
 
-        fetch(Credentials.SERVER_API_ENDPOINT + "0/register/foods", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-          },
-          body: JSON.stringify( {
-            id: this.props.Id,
-            ...this.state.newItem,
-          })
+      fetch(Credentials.SERVER_API_ENDPOINT + "0/register/foods", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify( {
+          id: this.props.Id,
+          ...this.state.newItem,
+        })
       }).then(response => response.json())
         .then((response ) => {
             if (response.exitCode !== 200) {
@@ -200,8 +186,8 @@ class AddItems extends Component<Props, State, /* imageData */> {
 
         console.log(this.props.newContainer)
         /* this.props.navigation.navigate('Home') */
+      }
     }
-  }
   
   cameraButton() {
     this.props.navigation.navigate("CaptureItems")  
