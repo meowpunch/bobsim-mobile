@@ -19,8 +19,14 @@ type State = {
   newItem: Item,
 }
 
+/* type imageData = {
+  uri: string,
+  name: string,
+  type: string
+}
+ */
 
-class AddItems extends Component<Props, State> {
+class AddItems extends Component<Props, State, /* imageData */> {
   constructor(props) {
     super(props);
      
@@ -130,11 +136,51 @@ class AddItems extends Component<Props, State> {
       console.log(this.props.Id)
 
       this.props.addItem(this.state.newItem)
-      console.log(this.props.addItem)
       
+      let photoItem = this.props.navigation.getParam('photoItem')
+      let formData = new FormData()
+      formData.append('file', JSON.parse(JSON.stringify({
+        uri : photoItem.uri,
+        name : 'testName.jpg',
+        type: 'image/jpg',
+      })))
+
+      console.log(this.props.navigation.getParam('photoItem'))
+      console.log(this.props.navigation.getParam('photoItem').type)
       
       console.log(Credentials.SERVER_API_ENDPOINT +  this.props.Id + "/register")
-      /* fetch(Credentials.SERVER_API_ENDPOINT +  this.props.Id+ "/register", {
+      fetch(Credentials.SERVER_API_ENDPOINT + "/2/registerImage/foods", {
+          method: "POST",
+          headers: {
+              "Content-Type": "multipart/form-data",
+              "Accept": "application/json"
+          },
+          body: formData
+      }).then(response => response.json())
+        .then((response ) => {
+            if (response.exitCode !== 200) {
+                throw new Error('send-message API call failed with message: ' + response.message)
+            } 
+            alert(response)
+        })
+
+        fetch(Credentials.SERVER_API_ENDPOINT + "/0/registerImage/foods", {
+          method: "POST",
+          headers: {
+              "Content-Type": "multipart/form-data",
+              "Accept": "application/json"
+          },
+          body: formData
+      }).then(response => response.json())
+        .then((response ) => {
+            if (response.exitCode !== 200) {
+                throw new Error('send-message API call failed with message: ' + response.message)
+            } 
+            alert(response)
+        })
+
+
+        fetch(Credentials.SERVER_API_ENDPOINT + "0/register/foods", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
@@ -150,9 +196,10 @@ class AddItems extends Component<Props, State> {
                 throw new Error('send-message API call failed with message: ' + response.message)
             } 
             alert(response)
-        }) */
+        })
+
         console.log(this.props.newContainer)
-        this.props.navigation.navigate('Home')
+        /* this.props.navigation.navigate('Home') */
     }
   }
   
