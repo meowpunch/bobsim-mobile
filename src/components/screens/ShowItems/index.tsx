@@ -1,24 +1,25 @@
 import React, { Component }  from "react";
 import {Button, Text, View, Image, ScrollView, Dimensions} from "react-native";
 import {NavigationInjectedProps, withNavigation, NavigationEvents} from "react-navigation";
-import {Item} from "../../../context/AppData";
+import {Item} from "../../../context/ItemData";
 import {styles} from "./styles";
 import Assets from "../../../constants/Assets";
 import {Credentials} from "../../../constants/Credentials";
 import AddItem from "../../icons/AddItem";
-import ItemComponent from "../../ItemComponent/."
-import ItemHeader from "../../ItemHeader/."
+import ItemComponent from "../../ItemComponent"
+import ItemHeader from "../../ItemHeader"
 
 
 type Props = NavigationInjectedProps & {
     container: Array<Item>,
     newContainer: Array<Item>,
+    resetItem: () => void
 }
 
 type State = {
 }
 
-class Landing extends Component<Props, State> {
+class ShowItems extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -42,9 +43,9 @@ class Landing extends Component<Props, State> {
                         
                             <NavigationEvents
                                 onWillFocus={payload => {
-                                    console.log("WTHWTHWTHWTH");
-                                    
-                                    console.log(this.props.newContainer)
+                                    console.log("&&&&&&&&&&&&&&&&&&&ShowItems will focused&&&&&&&&&&&&&&&");
+                                    /* console.log(this.props.newContainer) */
+                                    this.props.resetItem()
                                 }}
                             />
                             {
@@ -82,4 +83,4 @@ class Landing extends Component<Props, State> {
     }
 }
 
-export default withNavigation(Landing);
+export default withNavigation(ShowItems);

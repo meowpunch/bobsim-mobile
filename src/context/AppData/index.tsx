@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Item} from "../ItemData/index"
 
 export type Profile = {
     id: number;         //primary key
@@ -7,20 +8,13 @@ export type Profile = {
 };
 
 
-export type Item = {
-    name: string;
-    expDate: string;
-    category: string;
-    memo: string;
-    uri: string; // image uri
-};
-
-
 
 export type AppData = {
     profile: Profile,
     container: Array<Item>,
     newContainer: Array<Item>,
+
+    setContainer: (Items: any) => void,
     addItem: (Item: any) => void
 }
 
@@ -33,14 +27,14 @@ export const initialAppData = {
     container: [
         {
             name: '닭',
-            expDate: '2019.11.17',
+            expDate: '2019-11-17',
             category: '육류',
             memo: '12호',
             uri: 'https://fm-foodpicturebucket.s3.ap-northeast-2.amazonaws.com/frontend/foods/chicken.jpg',
         },
         {
             name: '감자',
-            expDate: '2019.11.22',
+            expDate: '2019-11-22',
             category: '야채',
             memo: '',
             uri: '', // https://fm-foodpicturebucket.s3.ap-northeast-2.amazonaws.com/frontend/foods/potato.jpg
@@ -49,21 +43,21 @@ export const initialAppData = {
     newContainer: [
         {
             name: '돼지고기',
-            expDate: '2020.1.23',
+            expDate: '2022-1-23',
             category: '육류',
-            memo: '뉴비',
+            memo: '냉동',
             uri: 'https://fm-foodpicturebucket.s3.ap-northeast-2.amazonaws.com/frontend/foods/pork.jpg',
         },
         {
             name: '양파',
-            expDate: '2020.1.21',
+            expDate: '2025-1-21',
             category: '야채',
             memo: '뉴비',
             uri: 'https://fm-foodpicturebucket.s3.ap-northeast-2.amazonaws.com/frontend/foods/onion.jpg',
-        },
+        },  
 
     ],
-
+    setContainer: () => {},
     addItem: () => {}
 };
 

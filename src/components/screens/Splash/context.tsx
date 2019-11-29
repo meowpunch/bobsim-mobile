@@ -1,8 +1,8 @@
 import React from "react";
 import Splash from "./index";
-import SomeDataContext from "../../../context/SomeData";
+import RecipesContext from "../../../context/RecipesData";
 import {NavigationParams, NavigationScreenProp, NavigationState} from "react-navigation";
-import SessionContext from "../../../context/Session";
+import AppDataContext from "../../../context/AppData";
 
 type Props = {
     navigation: NavigationScreenProp<NavigationState, NavigationParams>;
@@ -12,23 +12,22 @@ class SplashHandler extends React.Component<Props> {
 
     render() {
         return (
-            <SomeDataContext.Consumer>
-                {({fieldA, fieldB, fieldC}) => {
+            <RecipesContext.Consumer>
+                {({recipesList, setRecipesList}) => {
                     return (
-                        <SessionContext.Consumer>
-                            {({geolocation, setGeolocation}) => {
-                                return <Splash  
-                                    fieldA={fieldA}
-                                    fieldB={fieldB}
-                                    fieldC={fieldC}
-                                    geolocation={geolocation}
-                                    setGeolocation={setGeolocation}
+                        <AppDataContext.Consumer> 
+                            {({container, setContainer}) => {
+                                return <Splash
+                                    container= {container}
+                                    setContainer = {setContainer}
+                                    recipesList = {recipesList}
+                                    setRecipesList = {setRecipesList}
                                 />
                             }}
-                        </SessionContext.Consumer>
+                        </AppDataContext.Consumer>
                     )
                 }}
-            </SomeDataContext.Consumer>
+            </RecipesContext.Consumer>
         );
     };
 }

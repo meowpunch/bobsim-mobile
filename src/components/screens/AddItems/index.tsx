@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
 import {NavigationInjectedProps, NavigationEvents, withNavigation} from "react-navigation";
 import { Ionicons, AntDesign, Foundation } from "@expo/vector-icons";
-import {Item} from "../../../context/AppData";
+import {Item} from "../../../context/ItemData";
 
 
 import {styles} from "./styles";
@@ -13,10 +13,12 @@ type Props =  NavigationInjectedProps & {
   Id: number,
   newContainer: Array<Item>,
   addItem: (Item: any) => void
+  newItem: Item
 }
 
 type State = {
-  newItem: Item,
+  tempUri: string
+  tempItem: Item
 }
 
 /* type imageData = {
@@ -26,7 +28,7 @@ type State = {
 }
  */
 
-class AddItems extends Component<Props, State, /* imageData */> {
+class AddItems extends Component<Props, State /*, imageData */> {
   constructor(props) {
     super(props);
      
@@ -37,13 +39,21 @@ class AddItems extends Component<Props, State, /* imageData */> {
         inputTag: '',
         inputNote: '',
         imageUri: '', */
-        newItem: {
+        /* newItem: {
           name: '당근',
           expDate: '2020.2.2',
           category: '야채',
           memo: 'default Item',
           uri: '',
-        },
+        }, */
+        tempUri: '',
+        tempItem: {
+          name: '',
+          expDate: '',
+          category: '',
+          memo: '',
+          uri: '',
+        }
     }
   }   
 
@@ -57,31 +67,32 @@ class AddItems extends Component<Props, State, /* imageData */> {
   }
 
   onChangeTitle(text) {
-    this.setState({
+    this.props.newItem.name = text
+    /* this.setState({
       newItem: {
-        ...this.state.newItem,
+        ...this.props.newItem,
         name: text
       }
-    })
+    }) */
   }
 
   onChangeDate(text) {
     /* console.log(text) */
     
-    var date = text.split('.')  
+    var date = text.split('-')  
     /* console.log(date.length) */
 
     switch(date.length) {
       case 1:
         if (date[0].length == 4) {
-          if ( 2019<= parseInt(date[0]) && parseInt(date[0]) < 5000) text = date[0] + '.'
+          if ( 2019<= parseInt(date[0]) && parseInt(date[0]) < 5000) text = date[0] + '-'
           else alert("적절하지 않는 입력값입니다.")
         }
 
         break;
       case 2:
         if ( 0 < parseInt(date[1]) && parseInt(date[1]) <13 ) {
-          text = date[0] + '.' + date[1] + '.'
+          text = date[0] + '-' + date[1] + '-'
         } else alert("적절하지 않는 입력값입니다.")
         
         break;
@@ -94,11 +105,10 @@ class AddItems extends Component<Props, State, /* imageData */> {
     }
 
     this.setState({
-      newItem: {
-        ...this.state.newItem,
-        expDate: text
-      }
+      tempUri: text
     })
+    this.props.newItem.expDate = text
+    
   }
 
   onChangeTag(text) {
@@ -106,67 +116,83 @@ class AddItems extends Component<Props, State, /* imageData */> {
       alert("10자리 이상 입력할 수 없습니다.")
       text = text.subtr(0,9)
     }
-
-    this.setState({
+    
+    this.props.newItem.category = text
+    /* this.setState({
       newItem: {
-        ...this.state.newItem,
+        ...this.props.newItem,
         category: text
       }
-    })
+    }) */
   }
 
   onChangeNote(text) {
-    this.setState({
+    this.props.newItem.memo = text
+    /* this.setState({
       newItem: {
-        ...this.state.newItem,
+        ...this.props.newItem,
         memo: text
       }
-    })
+    }) */
   }
 
   pressButton() {
-    
 
-    if ((this.state.newItem.name).length == 0 || (this.state.newItem.expDate).split('.').length < 3) alert("옳바르지 않은 형식입니다.")
+
+    if ((this.props.newItem.name).length == 0 || (this.props.newItem.expDate).split('-').length < 3) alert("옳바르지 않은 형식입니다.")
     else {
       alert("throw data")
       console.log("after addPress");
       
-      console.log(this.state.newItem)
+      // console.log(this.props.newItem)
       console.log(this.props.Id)
 
-      this.props.addItem(this.state.newItem)
+      
+      
+
       
       let photoItem = this.props.navigation.getParam('photoItem')
-      let formData = new FormData()
-      formData.append('file', JSON.parse(JSON.stringify({
-        uri : photoItem.uri,
-        name : this.props.Id+'_'+this.state.newItem.name+'.jpg',
-        type: 'image/jpg',
-      })))
+      let photoUri = ''
 
-      /* console.log(this.props.navigation.getParam('photoItem'))
-      console.log(this.props.navigation.getParam('photoItem').type) */
-      
-      console.log(Credentials.SERVER_API_ENDPOINT +  this.props.Id + "/register")
+      // No Image, don't fetch Image
+      if(photoItem!=undefined) {
+        let formData = new FormData()
+        formData.append('file', JSON.parse(JSON.stringify({
+          uri : photoItem.uri,
+          name : this.props.newItem.name+'.jpg',
+          type: 'image/jpg',
+        })))
 
-      fetch(Credentials.SERVER_API_ENDPOINT + "/0/registerImage/foods", {
-        method: "POST",
-        headers: {
-            "Content-Type": "multipart/form-data",
-            "Accept": "application/json"
-        },
-        body: formData
-      }).then(response => response.json())
-        .then((response ) => {
-            if (response.exitCode !== 200) {
-                throw new Error('send-message API call failed with message: ' + response.message)
-            } 
-            alert(response)
-        })
+        formData.append('fileName', this.props.newItem.name+'.jpg')
 
+        photoUri = photoItem.uri
+        /* console.log("\n\n\n\n\n\n\n\n\n fufufufucktyuuu")
+        console.log(formData) */
+        
+        /* console.log(this.props.navigation.getParam('photoItem'))
+        console.log(this.props.navigation.getParam('photoItem').type) */
+        
+        console.log(Credentials.SERVER_API_ENDPOINT +"foods/register/" + this.props.Id)
+        
+        fetch(Credentials.SERVER_API_ENDPOINT + "images/registerImage/foods/" +  this.props.Id, {
+          method: "POST",
+          headers: {
+              "Content-Type": "multipart/form-data",
+              "Accept": "application/json"
+          },
+          body: formData
+        }).then(response => response.json())
+          .then((response ) => {
+              if (response.exitCode !== 200) {
+                  throw new Error('send-message API call failed with message: ' + response.message)
+              } 
+              alert(JSON.stringify(response))
+              console.log(JSON.stringify(response))
+          })
+        }
 
-      fetch(Credentials.SERVER_API_ENDPOINT + "0/register/foods", {
+      // When posting Item, uri is not required. We save S3's address on the backend side.
+      fetch(Credentials.SERVER_API_ENDPOINT + "foods/register/"+ this.props.Id , {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -174,18 +200,20 @@ class AddItems extends Component<Props, State, /* imageData */> {
         },
         body: JSON.stringify( {
           id: this.props.Id,
-          ...this.state.newItem,
+          ...this.props.newItem,
         })
       }).then(response => response.json())
         .then((response ) => {
             if (response.exitCode !== 200) {
                 throw new Error('send-message API call failed with message: ' + response.message)
             } 
-            alert(response)
         })
 
-        console.log(this.props.newContainer)
-        /* this.props.navigation.navigate('Home') */
+        
+        this.props.addItem(this.props.newItem)
+
+        // console.log(this.props.newContainer)
+        this.props.navigation.navigate('ShowItems')
       }
     }
   
@@ -248,7 +276,7 @@ class AddItems extends Component<Props, State, /* imageData */> {
                 keyboardType='numeric' 
                 onChangeText={text => this.onChangeDate(text)}
                 placeholder='2020.2.3'
-                value={this.state.newItem.expDate} 
+                value={this.state.tempUri} 
                 style={{flex:1, fontSize:26}}>
               </TextInput>
             </View>

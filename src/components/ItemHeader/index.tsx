@@ -1,6 +1,6 @@
 
 import {View, Text, TouchableOpacity} from "react-native";
-import {Item} from "../../context/AppData/index"
+import {Item} from "../../context/ItemData"
 import {NavigationInjectedProps} from "react-navigation"
 import {MaterialCommunityIcons, Entypo} from "@expo/vector-icons";
 import React from 'react';
@@ -20,14 +20,14 @@ export default class ItemHeader extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         
-        console.log(this.props.item.expDate)
-        var s = this.props.item.expDate.split('.')
-        console.log(s)
+        /* console.log(this.props.item.expDate) */
+        var s = this.props.item.expDate.split('-')
+        /* console.log(s) */
         var expireDate:Date = new Date(parseInt(s[0]),parseInt(s[1])-1,parseInt(s[2]))
         var nowDate:Date = new Date()
 
-        console.log(expireDate)
-        console.log(nowDate)
+        /* console.log(expireDate)
+        console.log(nowDate) */
 
         var due = Math.round((expireDate.getTime() - nowDate.getTime()) / (1000 * 3600 * 24))
         var color = 0

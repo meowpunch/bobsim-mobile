@@ -1,8 +1,7 @@
 import {createStackNavigator} from "react-navigation-stack";
 import {createDrawerNavigator} from "react-navigation-drawer";
 import SplashHandler from "../components/screens/Splash/context";
-import {LandingHandler} from "../components/screens/Landing/context";
-import CustomDrawerNavigator from "../components/CustomDrawerNavigator/context";
+import MainDrawerNavigator from "../components/Navigators/MainDrawerNavigator/context";
 
 
 /* import Assets from "../constants/Assets";
@@ -22,7 +21,7 @@ export const AppNavigator   = createStackNavigator({
         },
     },
     Landing: {
-        screen: CustomDrawerNavigator,
+        screen: MainDrawerNavigator,
         /* navigationOptions: {
             header: null,
             gesturesEnabled: false,

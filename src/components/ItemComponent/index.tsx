@@ -1,6 +1,6 @@
 
 import {Image, View, Text} from "react-native";
-import {Item} from "../../context/AppData/index"
+import {Item} from "../../context/ItemData"
 import {NavigationInjectedProps} from "react-navigation"
 import React from 'react';
 

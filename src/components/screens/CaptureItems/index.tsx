@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { Component } from "react";
 import { View, Text } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Camera } from "expo-camera"
-import {NavigationInjectedProps} from "react-navigation"
+import {NavigationInjectedProps, withNavigation} from "react-navigation"
+import {Item, initialNewItem} from "../../../context/ItemData";
 
 import styles from './styles';
 import Toolbar from './toolbar.component';
 import Gallery from './gallery.component';
 
-export default class CaptureItems extends React.Component<NavigationInjectedProps> {
+type Props =  NavigationInjectedProps & {
+    newItem: Item
+    resetItem: () => void
+}
+
+type State = {
+
+}
+  
+class CaptureItems extends Component<Props, State> {
+    constructor(props) {
+        super(props);
+    }   
+    
+    
     camera = null;
 
     state = {
@@ -30,6 +45,7 @@ export default class CaptureItems extends React.Component<NavigationInjectedProp
 
     handleShortCapture = async () => {
         const photoData = await this.camera.takePictureAsync();
+        this.props.newItem.uri = photoData.uri
         this.setState({ capturing: false, captures: [photoData, ...this.state.captures] })
         this.props.navigation.navigate("AddItems", {
             photoItem: photoData
@@ -86,3 +102,5 @@ export default class CaptureItems extends React.Component<NavigationInjectedProp
         );
     };
 };
+
+export default withNavigation(CaptureItems)

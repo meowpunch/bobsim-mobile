@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 13168,
-  "expoServerNgrokUrl": "https://cx-493.anonymous.freshfoodapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.cx-493.anonymous.freshfoodapp.exp.direct",
-  "ngrokPid": 9792,
+  "packagerPid": 1208,
+  "expoServerNgrokUrl": "https://sm-kfg.anonymous.freshfoodapp.exp.direct",
+  "packagerNgrokUrl": "https://packager.sm-kfg.anonymous.freshfoodapp.exp.direct",
+  "ngrokPid": 19104,
   "webpackServerPort": null
 }

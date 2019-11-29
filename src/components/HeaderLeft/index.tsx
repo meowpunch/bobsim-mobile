@@ -4,8 +4,7 @@ import {withNavigation} from "react-navigation"
 import {styles} from "./styles";
 import React from 'react';
 import { Ionicons } from "@expo/vector-icons";
-import CustomDrawerNavigator from "../CustomDrawerNavigator/context"
-import CustomStackNavigator from "../CustomStackNavigator";
+
 
 /* class HeaderLeft extends React.Component {
     render() {
