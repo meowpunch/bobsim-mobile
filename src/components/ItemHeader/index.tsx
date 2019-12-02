@@ -4,6 +4,7 @@ import {Item} from "../../context/ItemData"
 import {NavigationInjectedProps} from "react-navigation"
 import {MaterialCommunityIcons, Entypo} from "@expo/vector-icons";
 import React from 'react';
+import { Credentials } from "../../constants/Credentials";
 
 type Props = {
     item: Item,
@@ -49,7 +50,20 @@ export default class ItemHeader extends React.Component<Props, State> {
     } */
     
     deleteButton () {
-        alert("delete")
+        fetch(Credentials.SERVER_API_ENDPOINT + "foods/deleteById/1/" + this.props.item.name , {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+          }).then(response => response.json())
+            .then((response ) => {
+                /* if (response.exitCode !== 200) {
+                    throw new Error('send-message API call failed with message: ' + response.message)
+                } */ 
+                /* alert(response.exitCode)
+                console.log(response) */
+                console.log("delete" + this.props.item.name )
+            })
     }
     
 

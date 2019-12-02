@@ -27,7 +27,7 @@ class DetailedRecipe extends Component<Props, State> {
       recipe: props.navigation.getParam("recipe")
     }
 
-    console.log(props.navigation.getParam("recipe"))
+    //console.log(props.navigation.getParam("recipe"))
   }
 
   static navigationOptions = {
@@ -96,7 +96,7 @@ class DetailedRecipe extends Component<Props, State> {
 
                     <View key={key} style={{paddingBottom:6, paddingTop:6, flexDirection: "row", alignItems:"center", justifyContent:"space-between", borderColor:"#e6e6e6", borderBottomWidth:1}}>
                       <View style={{flexDirection:"row", alignItems:"center"}}>
-                        <Text style={{marginRight: 6}}>{ingredient.식자재명}</Text>
+                        { ingredient.보유 ? <Text style={{marginRight: 6}}>{ingredient.식자재명}</Text> : <Text style={{marginRight: 6, color: "red"}}>{ingredient.식자재명}</Text>}
                         <View style={{borderColor:"#b3b3b3", borderRadius:100, borderWidth:1}}>
                           <MaterialCommunityIcons name="information-variant" size={12} color="#b3b3b3"></MaterialCommunityIcons>
                         </View>

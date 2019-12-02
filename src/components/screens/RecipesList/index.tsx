@@ -20,6 +20,7 @@ type Props = NavigationInjectedProps & {
 }
 
 type State = {
+  isVisible: boolean,
 }
 
 
@@ -27,9 +28,15 @@ type State = {
 class RecipesList extends Component<Props,State> {
   constructor(props: Props) {
     super(props);
+
+    this.state={
+      isVisible: false,
+    }
   }
 
   componentDidMount () {
+
+
     
   }
   
@@ -115,6 +122,12 @@ class RecipesList extends Component<Props,State> {
        
             </View>     
           </ScrollView>
+
+
+
+          {/* <View style={this.state.isVisible? {position:"absolute", width:"100%", height:"100%", opacity:0.5, } : styles.imageV}>
+
+          </View> */}
 
         </View>
       </View>

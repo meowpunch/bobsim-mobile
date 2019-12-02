@@ -1,8 +1,8 @@
 {
-  "name": "app-service",
-  "displayName": "app-service",
+  "name": "FreshFood",
+  "displayName": "FreshFood",
   "expo": {
-    "name": "app-service",
+    "name": "FreshFood",
     "slug": "expo-template-bare",
     "privacy": "unlisted",
     "sdkVersion": "35.0.0",
@@ -12,6 +12,10 @@
       "ios",
       "android",
       "web"
-    ]
+    ],
+    "notification": {
+      "icon": "assets/images/logo/favicon.png"
+    }
+    
   }
 }

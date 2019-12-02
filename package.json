@@ -11,6 +11,7 @@
     "braces": ">=2.3.1",
     "expo": "^35.0.0",
     "expo-camera": "^7.0.0",
+    "expo-constants": "^7.0.1",
     "expo-location": "^7.0.0",
     "mem": ">=4.0.0",
     "react": "16.8.3",

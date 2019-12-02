@@ -71,8 +71,6 @@ class ShowItems extends Component<Props, State> {
                                         <Text>{item.name}</Text>
                                     })
                                 }
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores mollitia quisquam nihil, maiores accusantium, possimus quidem odit quam dicta suscipit, unde deserunt. Aut suscipit temporibus modi perferendis repellendus ullam?
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam iusto incidunt nemo cumque quisquam amet iste, nam adipisci aspernatur labore quos impedit laborum consequatur deleniti repudiandae harum! Illo, eveniet nobis?
                             </Text>
                         </View>     
                     </ScrollView>

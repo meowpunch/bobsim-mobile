@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 1208,
-  "expoServerNgrokUrl": "https://sm-kfg.anonymous.freshfoodapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.sm-kfg.anonymous.freshfoodapp.exp.direct",
-  "ngrokPid": 19104,
+  "packagerPid": 21224,
+  "expoServerNgrokUrl": "https://2q-pyf.meowpunch.freshfoodapp.exp.direct",
+  "packagerNgrokUrl": "https://packager.2q-pyf.meowpunch.freshfoodapp.exp.direct",
+  "ngrokPid": 22180,
   "webpackServerPort": null
 }
