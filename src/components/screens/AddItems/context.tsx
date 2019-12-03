@@ -17,7 +17,7 @@ export const AddItemsHandler: React.FC<Props> = (props: Props) => {
                     <AppDataContext.Consumer>   
                         {({profile, newContainer, addItem}) => {
                             return <AddItems
-                                Id={profile.id}
+                                id={profile.id}
                                 newContainer={newContainer}
                                 addItem={addItem}
                                 newItem={newItem}

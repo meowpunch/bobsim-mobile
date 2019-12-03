@@ -28,11 +28,12 @@ class ShowItemsHandler extends React.Component<Props> {
                 {({resetItem}) => {
                     return (
                         <AppDataContext.Consumer> 
-                            {({container,newContainer}) => {
+                            {({container,newContainer,getContainer}) => {
                                 return <ShowItems
                                     container= {container}
                                     newContainer= {newContainer}
                                     resetItem = {resetItem}
+                                    getContainer = {getContainer}
                                 />
                             }}
                         </AppDataContext.Consumer>

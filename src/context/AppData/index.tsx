@@ -14,8 +14,8 @@ export type AppData = {
     container: Array<Item>,
     newContainer: Array<Item>,
 
-    setContainer: (Items: any) => void,
-    addItem: (Item: any) => void
+    getContainer: () => void,
+    addItem: (item: any, id: number, image:any) => void
 }
 
 export const initialAppData = {
@@ -57,7 +57,7 @@ export const initialAppData = {
         },  
 
     ],
-    setContainer: () => {},
+    getContainer: () => {},
     addItem: () => {}
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import RecipesContext, {initialRecipesData, RecipeData, Recipe} from "./index";
+import { Credentials } from "../../constants/Credentials";
 
 type Props = {
     
@@ -12,19 +13,33 @@ class RecipesProvider extends React.Component<Props, State> {
         super(props);
         this.state = {
             ...initialRecipesData,
-            setRecipesList: this.setRecipesList
+            getRecipesList: this.getRecipesList
         };
-        this.setRecipesList = this.setRecipesList.bind(this);
+        this.getRecipesList = this.getRecipesList.bind(this);
     }
 
-    setRecipesList = (Recipes: any) => {
+    getRecipesList = () => {
         // console.log(Recipes)
-        
 
-        this.setState({
-            recipesList: Recipes      
-        })
-        console.log("after calling setRecipesList")
+        
+        fetch(Credentials.SERVER_API_ENDPOINT + "recipes/topN/UserId=1/size=10", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(response => response.json())
+            /* .then(response => response._source) */
+            .then((response: Array<Recipe>) => {
+                /* if (response.exitCode !== 200) {
+                    throw new Error('send-message API call failed with message: ' + response.message)
+                } */
+                this.setState({
+                    recipesList: response     
+                })
+                // console.log(response)
+            })
+        
+        //console.log("after calling getRecipesList")
     }
 
     render() {

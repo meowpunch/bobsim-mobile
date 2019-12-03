@@ -25,7 +25,7 @@ export type Recipe = {
 
 export type RecipeData = {
     recipesList: Array<Recipe>,
-    setRecipesList: (Recipes: any) => void,
+    getRecipesList: () => void,
 }
 
 export const initialRecipesData = {
@@ -48,7 +48,7 @@ export const initialRecipesData = {
         }
     ],
         
-    setRecipesList: () => {},
+    getRecipesList: () => {},
 };
 
 const RecipesContext = React.createContext<RecipeData>(initialRecipesData);

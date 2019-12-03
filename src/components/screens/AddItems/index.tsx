@@ -10,9 +10,9 @@ import {Credentials} from "../../../constants/Credentials";
 
 
 type Props =  NavigationInjectedProps & {
-  Id: number,
+  id: number,
   newContainer: Array<Item>,
-  addItem: (Item: any) => void
+  addItem: (item: any, id: number, image:any) => void,
   newItem: Item
 }
 
@@ -92,7 +92,7 @@ class AddItems extends Component<Props, State /*, imageData */> {
         break;
       case 2:
         if ( 0 < parseInt(date[1]) && parseInt(date[1]) <13 ) {
-          text = date[0] + '-' + date[1] + '-'
+          // text = date[0] + '-' + date[1] + '-'    //error 있음
         } else alert("적절하지 않는 입력값입니다.")
         
         break;
@@ -137,85 +137,25 @@ class AddItems extends Component<Props, State /*, imageData */> {
   }
 
   pressButton() {
-
-
     if ((this.props.newItem.name).length == 0 || (this.props.newItem.expDate).split('-').length < 3) alert("옳바르지 않은 형식입니다.")
     else {
       alert("throw data")
       console.log("after addPress");
       
       // console.log(this.props.newItem)
-      console.log(this.props.Id)
-
-      
-      
+      console.log(this.props.id)
 
       
       let photoItem = this.props.navigation.getParam('photoItem')
-      let photoUri = ''
+    
+      this.props.addItem(this.props.newItem, this.props.id, photoItem)
 
-      // No Image, don't fetch Image
-      if(photoItem!=undefined) {
-        let formData = new FormData()
-        formData.append('file', JSON.parse(JSON.stringify({
-          uri : photoItem.uri,
-          name : this.props.newItem.name+'.jpg',
-          type: 'image/jpg',
-        })))
-
-        formData.append('fileName', this.props.newItem.name+'.jpg')
-
-        photoUri = photoItem.uri
-        /* console.log("\n\n\n\n\n\n\n\n\n fufufufucktyuuu")
-        console.log(formData) */
-        
-        /* console.log(this.props.navigation.getParam('photoItem'))
-        console.log(this.props.navigation.getParam('photoItem').type) */
-        
-        console.log(Credentials.SERVER_API_ENDPOINT +"foods/register/" + this.props.Id)
-        
-        fetch(Credentials.SERVER_API_ENDPOINT + "images/registerImage/foods/" +  this.props.Id, {
-          method: "POST",
-          headers: {
-              "Content-Type": "multipart/form-data",
-              "Accept": "application/json"
-          },
-          body: formData
-        }).then(response => response.json())
-          .then((response ) => {
-              if (response.exitCode !== 200) {
-                  throw new Error('send-message API call failed with message: ' + response.message)
-              } 
-              alert(JSON.stringify(response))
-              console.log(JSON.stringify(response))
-          })
-        }
-
-      // When posting Item, uri is not required. We save S3's address on the backend side.
-      fetch(Credentials.SERVER_API_ENDPOINT + "foods/register/"+ this.props.Id , {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify( {
-          id: this.props.Id,
-          ...this.props.newItem,
-        })
-      }).then(response => response.json())
-        .then((response ) => {
-            if (response.exitCode !== 200) {
-                throw new Error('send-message API call failed with message: ' + response.message)
-            } 
-        })
-
-        
-        this.props.addItem(this.props.newItem)
-
-        // console.log(this.props.newContainer)
-        this.props.navigation.navigate('ShowItems')
-      }
+      // console.log(this.props.newContainer)
+      this.props.navigation.navigate('ShowItems')
+      //setTimeout(() => this.props.navigation.navigate('ShowItems'), 3000);
     }
+  }
+    
   
   cameraButton() {
     this.props.navigation.navigate("CaptureItems")  
@@ -275,7 +215,7 @@ class AddItems extends Component<Props, State /*, imageData */> {
               <TextInput 
                 keyboardType='numeric' 
                 onChangeText={text => this.onChangeDate(text)}
-                placeholder='2020.2.3'
+                placeholder='2020-2-3'
                 value={this.state.tempUri} 
                 style={{flex:1, fontSize:26}}>
               </TextInput>

@@ -16,9 +16,9 @@ import Constants from "expo-constants";
 
 type Props = NavigationInjectedProps & {
     container: Array<Item>,
-    setContainer: (Items: any) => void,
+    getContainer: () => void,
     recipesList: Array<Recipe>,
-    setRecipesList: (Recipes: any) => void,
+    getRecipesList: () => void,
 }
 
 type State = {
@@ -36,44 +36,9 @@ class Splash extends React.Component<Props, State> {
         }
 
 
-
-
-        fetch(Credentials.SERVER_API_ENDPOINT + "foods/findAll/1", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(response => response.json())
-            .then((response) => {
-                /* if (response.exitCode !== 200) {
-                    throw new Error('send-message API call failed with message: ' + response.message)
-                } */
-                /* alert(response.exitCode)
-                console.log(response) */
-                console.log("get foods!!!!!!!!!!! in splash")
-                this.props.setContainer(response)
-
-            })
-
-
-
-        fetch(Credentials.SERVER_API_ENDPOINT + "recipes/topN/UserId=1/size=10", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(response => response.json())
-            /* .then(response => response._source) */
-            .then((response) => {
-                /* if (response.exitCode !== 200) {
-                    throw new Error('send-message API call failed with message: ' + response.message)
-                } */
-                this.props.setRecipesList(response)
-                // console.log(response)
-            })
-
-
-
+        this.props.getContainer();
+        this.props.getRecipesList();
+        
         setTimeout(() => this.props.navigation.navigate('Landing'), 3000);
     }
 

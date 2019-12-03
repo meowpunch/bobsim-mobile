@@ -13,16 +13,19 @@ import ItemHeader from "../../ItemHeader"
 type Props = NavigationInjectedProps & {
     container: Array<Item>,
     newContainer: Array<Item>,
-    resetItem: () => void
+    resetItem: () => void,
+    getContainer: () => void,
 }
 
 type State = {
+    refreshValue: boolean,
 }
 
 class ShowItems extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
+            refreshValue: true,
         }
     }
 
@@ -33,7 +36,7 @@ class ShowItems extends Component<Props, State> {
             <View style={styles.container}>
                 <View style={styles.wrapper}>
 
-                    <ScrollView style={{backgroundColor:"black"}}>
+                    <ScrollView style={{backgroundColor:"#f2f2f2"}}>
                         <View style={{width:"100%", aspectRatio:2.5,  backgroundColor:"skyblue",}}>
                             <Image source={Assets.Image.advertise} style={styles.advertise}></Image>
                         </View>
@@ -45,7 +48,10 @@ class ShowItems extends Component<Props, State> {
                                 onWillFocus={payload => {
                                     console.log("&&&&&&&&&&&&&&&&&&&ShowItems will focused&&&&&&&&&&&&&&&");
                                     /* console.log(this.props.newContainer) */
-                                    this.props.resetItem()
+                                    this.props.getContainer();
+                                    this.setState({
+                                        refreshValue: !this.state.refreshValue,
+                                    })
                                 }}
                             />
                             {
@@ -56,14 +62,15 @@ class ShowItems extends Component<Props, State> {
                                     </View>                                 
                                 ))
                             }
-                            {
+
+                            {/* {
                                 this.props.newContainer.map((item,key) => (
                                     <View key={key} >
                                         <ItemHeader item={item}></ItemHeader>
                                         <ItemComponent item={item}></ItemComponent>
                                     </View>
                                 ))
-                            }
+                            } */}
          
                             <Text style={styles.apiResult}>
                                 {

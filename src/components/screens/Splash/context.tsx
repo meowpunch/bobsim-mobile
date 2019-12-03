@@ -13,15 +13,15 @@ class SplashHandler extends React.Component<Props> {
     render() {
         return (
             <RecipesContext.Consumer>
-                {({recipesList, setRecipesList}) => {
+                {({recipesList, getRecipesList}) => {
                     return (
                         <AppDataContext.Consumer> 
-                            {({container, setContainer}) => {
+                            {({container, getContainer}) => {
                                 return <Splash
                                     container= {container}
-                                    setContainer = {setContainer}
+                                    getContainer = {getContainer}
                                     recipesList = {recipesList}
-                                    setRecipesList = {setRecipesList}
+                                    getRecipesList = {getRecipesList}
                                 />
                             }}
                         </AppDataContext.Consumer>
