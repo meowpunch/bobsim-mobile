@@ -29,10 +29,10 @@ class RecipesListHandler extends React.Component<Props> {
                 {({fieldA, fieldB, fieldC}) => {
                     return (
                         <RecipesContext.Consumer>
-                            {({recipesList, setRecipesList}) => {
+                            {({recipesList, getRecipesList}) => {
                                 return <RecipesList
                                     recipesList = {recipesList}
-                                    setRecipesList = {setRecipesList}
+                                    getRecipesList = {getRecipesList}
                                 
                                 />
                             }}

@@ -108,7 +108,7 @@ class DetailedRecipe extends Component<Props, State> {
               </View>
 
               <View style={{width:"75%", alignSelf:"center"}}>
-                <TouchableOpacity style={{backgroundColor:"#ff8533", flexDirection: "row", alignItems:"center", justifyContent:"center", padding: 8}} onPress={() => {alert("FRESH SCANNER")}}>
+                <TouchableOpacity style={{backgroundColor:"#ff8533", flexDirection: "row", alignItems:"center", justifyContent:"center", padding: 8}} onPress={() => {alert("FRESH SCANNER will be launched in 2020")}}>
                   <Text style={{color: "white", fontSize:18, marginRight:8}}>
                     최저가 재료 사러가기  
                   </Text>

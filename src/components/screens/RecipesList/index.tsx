@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Image, Text, ScrollView, Modal, TouchableOpacity} from "react-native";
+import { View, Image, Text, ScrollView, Modal, TouchableOpacity, RefreshControl} from "react-native";
 import SettingsHRight from "../../HeaderRight/SettingsHRight"
 import HeaderLeft from "../../HeaderLeft/index"
 import { Ionicons, EvilIcons,AntDesign,FontAwesome } from "@expo/vector-icons";
@@ -12,15 +12,18 @@ import { Row } from "react-native-easy-grid";
 
 
 
+
 /* import CustomHeader from "../components/CustomHeader"; */
 
 type Props = NavigationInjectedProps & {
   recipesList: Array<Recipe>,
-  setRecipesList: (Recipes: any) => void
+  getRecipesList: () => void
 }
 
 type State = {
   isVisible: boolean,
+  refreshValue: boolean,
+  refreshing: boolean,
 }
 
 
@@ -31,15 +34,23 @@ class RecipesList extends Component<Props,State> {
 
     this.state={
       isVisible: false,
+      refreshValue: false,
+      refreshing: false,
     }
   }
 
   componentDidMount () {
-
-
-    
   }
   
+  _onRefresh = () => {
+
+    this.props.getRecipesList();
+    this.setState({ refreshValue: !this.state.refreshValue});
+    /* fetchData().then(() => {
+        this.setState({ refreshing: false });
+    }); */
+  }
+
   recipePressed(recipe: Recipe) {
     this.props.navigation.navigate("DetailedRecipe", {
       recipe: recipe
@@ -49,10 +60,19 @@ class RecipesList extends Component<Props,State> {
 
   render() {
     return (
+      
       <View style={styles.container}>
         <View style={styles.wrapper}>
 
-          <ScrollView style={{backgroundColor:"black"}}>
+          <ScrollView style={{backgroundColor:"black"}}
+                refreshControl={
+                  <RefreshControl
+                      refreshing={this.state.refreshing}
+                      onRefresh={this._onRefresh}
+                  />
+              }
+          > 
+            
             <View style={{width:"100%", aspectRatio:2.5}}>
               <Image source={{uri: "https://fm-foodpicturebucket.s3.ap-northeast-2.amazonaws.com/frontend/foodapplianceAd3.jpg"}} style={{flex:1, resizeMode: 'cover', width: '100%',}}></Image>
             </View>

@@ -34,7 +34,7 @@ class AppDataProvider extends React.Component<Props, State> {
                 /* if (response.exitCode !== 200) {
                     throw new Error('send-message API call failed with message: ' + response.message)
                 } */
-                console.log(response)
+                /* console.log(response) */
                 this.setState({
                     container: response
                 })
@@ -106,8 +106,8 @@ class AppDataProvider extends React.Component<Props, State> {
 
         
         
-        console.log("********************addItem***************************")
-        console.log(item)
+        /* console.log("********************addItem***************************")
+        console.log(item) */
         /* this.setState({
             newContainer: [...this.state.newContainer, item]
         }) */

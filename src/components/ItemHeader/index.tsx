@@ -70,9 +70,9 @@ export default class ItemHeader extends React.Component<Props, State> {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: {
-
-            },
+            body: JSON.stringify({
+                    fileName: this.props.item.name + ".jpg"
+            }),
         }).then(response => response.json())
             .then((response) => {
                 /* if (response.exitCode !== 200) {

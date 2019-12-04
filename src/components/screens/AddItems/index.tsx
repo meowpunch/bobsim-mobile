@@ -17,8 +17,8 @@ type Props =  NavigationInjectedProps & {
 }
 
 type State = {
-  tempUri: string
-  tempItem: Item
+  /* tempUri: string */
+  newItem: Item
 }
 
 /* type imageData = {
@@ -39,21 +39,21 @@ class AddItems extends Component<Props, State /*, imageData */> {
         inputTag: '',
         inputNote: '',
         imageUri: '', */
-        /* newItem: {
-          name: '당근',
-          expDate: '2020.2.2',
-          category: '야채',
-          memo: 'default Item',
+        newItem: {
+          name: '',
+          expDate: '',
+          category: '',
+          memo: '',
           uri: '',
-        }, */
-        tempUri: '',
+        },
+        /* tempUri: '',
         tempItem: {
           name: '',
           expDate: '',
           category: '',
           memo: '',
           uri: '',
-        }
+        } */
     }
   }   
 
@@ -67,20 +67,20 @@ class AddItems extends Component<Props, State /*, imageData */> {
   }
 
   onChangeTitle(text) {
-    this.props.newItem.name = text
-    /* this.setState({
+    // this.props.newItem.name = text
+    this.setState({
       newItem: {
-        ...this.props.newItem,
+        ...this.state.newItem,
         name: text
       }
-    }) */
+    })
   }
 
   onChangeDate(text) {
     /* console.log(text) */
     
     var date = text.split('-')  
-    /* console.log(date.length) */
+    console.log(date)
 
     switch(date.length) {
       case 1:
@@ -97,7 +97,7 @@ class AddItems extends Component<Props, State /*, imageData */> {
         
         break;
       case 3:
-        if ( 0 < parseInt(date[2]) && parseInt(date[2]) <32 ) {
+        if ( 0 < parseInt(date[2]) && parseInt(date[2]) <32 || date[2] == '') {
           
         } else alert("적절하지 않는 입력값입니다.")
         
@@ -105,9 +105,12 @@ class AddItems extends Component<Props, State /*, imageData */> {
     }
 
     this.setState({
-      tempUri: text
+      newItem: {
+        ...this.state.newItem,
+        expDate: text
+      }
     })
-    this.props.newItem.expDate = text
+    //this.props.newItem.expDate = text
     
   }
 
@@ -117,30 +120,29 @@ class AddItems extends Component<Props, State /*, imageData */> {
       text = text.subtr(0,9)
     }
     
-    this.props.newItem.category = text
-    /* this.setState({
+    //this.props.newItem.category = text
+    this.setState({
       newItem: {
-        ...this.props.newItem,
+        ...this.state.newItem,
         category: text
       }
-    }) */
+    })
   }
 
   onChangeNote(text) {
-    this.props.newItem.memo = text
-    /* this.setState({
+    //this.props.newItem.memo = text
+    this.setState({
       newItem: {
-        ...this.props.newItem,
+        ...this.state.newItem,
         memo: text
       }
-    }) */
+    })
   }
 
   pressButton() {
-    if ((this.props.newItem.name).length == 0 || (this.props.newItem.expDate).split('-').length < 3) alert("옳바르지 않은 형식입니다.")
+    if ((this.state.newItem.name).length == 0 || (this.state.newItem.expDate).split('-').length < 3) alert("옳바르지 않은 형식입니다.")
     else {
-      alert("throw data")
-      console.log("after addPress");
+
       
       // console.log(this.props.newItem)
       console.log(this.props.id)
@@ -148,11 +150,11 @@ class AddItems extends Component<Props, State /*, imageData */> {
       
       let photoItem = this.props.navigation.getParam('photoItem')
     
-      this.props.addItem(this.props.newItem, this.props.id, photoItem)
+      this.props.addItem(this.state.newItem, this.props.id, photoItem)
 
       // console.log(this.props.newContainer)
-      this.props.navigation.navigate('ShowItems')
-      //setTimeout(() => this.props.navigation.navigate('ShowItems'), 3000);
+      // this.props.navigation.navigate('ShowItems')
+      setTimeout(() => this.props.navigation.navigate('ShowItems'), 3000);
     }
   }
     
@@ -216,7 +218,7 @@ class AddItems extends Component<Props, State /*, imageData */> {
                 keyboardType='numeric' 
                 onChangeText={text => this.onChangeDate(text)}
                 placeholder='2020-2-3'
-                value={this.state.tempUri} 
+                value={this.state.newItem.expDate} 
                 style={{flex:1, fontSize:26}}>
               </TextInput>
             </View>
