@@ -15,8 +15,8 @@ export default class Settings extends Component {
     drawerIcon: () => (<Ionicons name="ios-settings" size={28} color="#f2f2f2"/>),
 
     headerTitle: "설정",
-    headerRight: SettingsHRight,
-    headerLeft: HeaderLeft,
+    headerRight: () => <SettingsHRight/>,
+    headerLeft: () => <HeaderLeft/>,
 
   }
 

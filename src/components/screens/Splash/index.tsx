@@ -38,7 +38,7 @@ class Splash extends React.Component<Props, State> {
 
         this.props.getContainer();
         this.props.getRecipesList();
-        
+
         setTimeout(() => this.props.navigation.navigate('Landing'), 3000);
     }
 
@@ -67,7 +67,7 @@ class Splash extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        this.registerForPushNotificationsAsync();
+        //this.registerForPushNotificationsAsync();
 
         // Handle notifications that are received or selected while the app
         // is open. If the app was closed and then opened by tapping the

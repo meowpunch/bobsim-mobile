@@ -25,7 +25,7 @@ const RecipesStackNavigator = createStackNavigator(
       /* headerTitle: "나의 냉장고",
       headerRight: HomeRHeader,
       headerLeft: HeaderLeft, */
-      header: null
+      headerShown: false,
     }
   }
 );

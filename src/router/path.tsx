@@ -16,8 +16,8 @@ export const AppNavigator   = createStackNavigator({
     Splash: {
         screen: SplashHandler,
         navigationOptions: {
-            header: null,
-            gesturesEnabled: false,
+            headerShown: false,
+            gestureEnabled: false,
         },
     },
     Landing: {

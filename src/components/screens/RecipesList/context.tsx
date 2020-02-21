@@ -18,8 +18,8 @@ class RecipesListHandler extends React.Component<Props> {
         /* drawerLabel: " 요리 추천",
         drawerIcon: () => (<MaterialCommunityIcons name="silverware-fork-knife" size={28} color="#f2f2f2"/>), */
         headerTitle: "추천 요리",
-        headerRight: HomeRHeader,
-        headerLeft: HeaderLeft,
+        headerRight: () => <HomeRHeader/>,
+        headerLeft: () => <HeaderLeft/>,
     }
     
 

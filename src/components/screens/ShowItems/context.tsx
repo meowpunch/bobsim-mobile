@@ -18,8 +18,8 @@ class ShowItemsHandler extends React.Component<Props> {
         
         
         headerTitle: "냉장고",
-        headerRight: HomeRHeader,
-        headerLeft: HeaderLeft,
+        headerRight: () => <HomeRHeader/>,
+        headerLeft: () => <HeaderLeft/>,
     }
     
     render() {
