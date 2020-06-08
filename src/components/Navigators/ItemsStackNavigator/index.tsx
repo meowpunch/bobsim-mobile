@@ -15,8 +15,12 @@ const ItemsStackNavigator = createStackNavigator(
   {
     ShowItems: ShowItemsHandler,
 
-    AddItems: AddItemsHandler,
-
+    AddItems: {
+      screen: AddItemsHandler,
+      navigationOptions: {
+        title: "식품 추가"
+      }
+    },
     CaptureItems: CaptureItemsHandler
   },
  /*  {

@@ -61,10 +61,10 @@ class AddItems extends Component<Props, State /*, imageData */> {
 
   static navigationOptions = {
 
-    headerTitle: "상품 추가",
+    title: "상품 추가",
     /* headerRight: HomeRHeader,
     headerLeft: HeaderLeft, */
-  }
+  };
 
   onChangeTitle(text) {
     // this.props.newItem.name = text
