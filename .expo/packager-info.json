@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 23424,
-  "expoServerNgrokUrl": "https://et-stj.meowpunch.freshfoodapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.et-stj.meowpunch.freshfoodapp.exp.direct",
-  "ngrokPid": 11912,
+  "packagerPid": 23976,
+  "expoServerNgrokUrl": "https://et-stj.anonymous.production-bobsim-reactnative.exp.direct",
+  "packagerNgrokUrl": "https://packager.et-stj.anonymous.production-bobsim-reactnative.exp.direct",
+  "ngrokPid": 24808,
   "webpackServerPort": null
 }

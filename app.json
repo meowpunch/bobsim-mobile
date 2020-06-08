@@ -1,8 +1,8 @@
 {
-  "name": "FreshFood",
-  "displayName": "FreshFood",
+  "name": "BOBSIM",
+  "displayName": "BOBSIM",
   "expo": {
-    "name": "FreshFood",
+    "name": "BOBSIM",
     "slug": "expo-template-bare",
     "privacy": "unlisted",
     "sdkVersion": "36.0.0",
