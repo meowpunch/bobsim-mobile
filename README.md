@@ -1,7 +1,7 @@
 # BOBSIM
 - AI based food materials management service
 ## Brief
-By recommending recipes based on food ingredients with notification that the shelf life of the ingredients in the refrigerator is imminent, it helps you eat at home and reduces the amount of food that you throw away.
+By recommending recipes based on food ingredients with notification that the shelf life of the ingredients in the refrigerator is imminent, it helps you cook and eat food at home and reduces the amount of food that you throw away.
 ## Environment
 A cross platform capable of driving both Android and IOS services with React Native
 1. ReactNative
