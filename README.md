@@ -1,4 +1,5 @@
 # BOBSIM
+This project was moved to private repo
 - AI based food materials management service
 ## Brief
 By recommending recipes based on food ingredients with notification that the shelf life of the ingredients in the refrigerator is imminent, it helps you cook and eat food at home and reduces the amount of food that you throw away.
